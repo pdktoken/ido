@@ -5,6 +5,7 @@ import king from '../asset/king.jpg';
 import question from '../asset/question.jpg';
 import pdkSougou from '../asset/pdk-sougou.png';
 import pdkSvg from '../asset/pdk.svg';
+import guorenprojPng from '../asset/guorenproj.png';
 import pay from '../asset/pay.gif';
 import styles from './index.module.css';
 
@@ -169,8 +170,13 @@ function App() {
   }, [web3State.isEnabled, web3State.account])
 
   const donate = async () => {
+    console.log('web3State', web3State);
+    if (56 !== web3State.network.chainId) {
+      alert('请切换到 bsc 网络（BNB Smart Chain Mainnet）');
+      return;
+    }
     if (web3State.balance < 0.011) {
-      alert('不够足够的HT打款');
+      alert('不够足够的 BNB 打款，' + '你当前的余额为： ' + web3State.balance );
       return;
     }
 
@@ -180,6 +186,7 @@ function App() {
     };
 
     try {
+      alert('请确认打款信息：直接 transfer 0.011 BNB 到 ' + CONSTANTS.myAddr)
       const tx = await sendTransaction(
         web3State.signer,
         web3State.provider,
@@ -187,10 +194,10 @@ function App() {
       );
 
       if (tx) {
-        alert('成功了，谢谢');
+        alert('打款成功了，感谢支持。坐等 ido 成功吧。');
       }
       else {
-        alert('失败了');
+        alert('打款失败了');
       }
     } catch (error) {
       alert(JSON.stringify(error));
@@ -206,12 +213,16 @@ function App() {
 
       <div>
         <section>
+          <h3>口号</h3>
+          <div>Let’s make #BNBChain great again!!!🚀🚀</div>
+        </section>
+        <section>
           <h3>发行什么币</h3>
           <div>
             <img src={pdkSvg} alt="" className={styles.logo} />
           </div>
           <div>即将发行一个数字货币，但是为了群众的参与感（打钱），就简单粗暴试试募资。</div>
-          <div>这个币叫做PDK，暂且定义为：跑得快。</div>
+          <div>这个币叫做 PDK ，暂且定义为：跑得快。</div>
           <div>看图，你也可以将它定义为其他名字。</div>
           <div>
             <img src={pdkSougou} alt="" className={styles.pdkSougou} />
@@ -219,42 +230,51 @@ function App() {
         </section>
 
         <section>
+          <h3>注意</h3>
+          <div>这是一个中国人发行的项目，希望能以此项目改变 Twitter 上各种说国人的项目不能碰的说法。</div>
+          <div>大家放心冲。</div>
+          <div className={styles.guorenprojPngC}>
+            <img src={guorenprojPng} alt="" className="" />
+          </div>
+        </section>
+
+        <section>
           <h3>关于这个币</h3>
           <div>目前该币尚未发行，合约地址也还没有，等后期发行了，会在这里公布。</div>
-          <div>假如现有PDK这个币，都不是这里面提到的PDK。</div>
-          <div>发行总额为1万亿个（上限）？还是一亿个（下限）？太多0了有点看不过来。</div>
-          <div>发行个数为1亿至一万亿个之间，由社区讨论决定。</div>
+          <div>假如现有 PDK 这个币，都不是这里面提到的 PDK。</div>
+          <div>发行总额为 1 万亿个（上限）？还是一亿个（下限）？太多 0 了有点看不过来。</div>
+          <div>发行个数为 1 亿至 1 万亿个之间，由社区讨论决定。</div>
         </section>
 
         <section>
           <h3>募资金额</h3>
-          <div>最低目标是筹备1HT。</div>
-          <div>最高目标：无。</div>
-          <div>如果募资高于两倍HT，那么开发者将截留1HT最为最初的买域名费用（假如后期买的话）。</div>
-          <div>每次募资金额为0.011HT，不等于这个金额的，将当成无偿捐赠，由社区决定如何使用。</div>
-          <div>每个账号没有限制打多少次，多次打将记录为一次。</div>
-          <div>剩余HT将扣除手续费和50%的币加入LP池，</div>
-          <div>并且马上将LP池打到黑洞地址，这里是马上打到黑洞。</div>
-          <div>假如募资金额过大，例如大于1000HT（此处尚未决定lp上限），</div>
-          <div>那么最多将1000HT放入LP池子，剩余的部分同样由社区决定如何使用。</div>
-          <div>对于每个参与打款的账号，将在该币发行的时候，象征性给每个人打1个PDK。</div>
-          <div>反正募资的那个0.011HT肯定能买不少的，不要期望募资的币能卖回本。</div>
+          <div>最低目标是筹备 1.1 BNB (就是大概100个参与者) 。</div>
+          <div>最高目标： 1100 BNB 。</div>
+          <div>如果募资高于两倍 BNB ，那么开发者将截留 1 BNB 最为最初的买域名费用（假如后期买的话）。</div>
+          <div>每次募资金额为 0.011 BNB ，不等于这个金额的，将当成无偿捐赠，由社区决定如何使用。</div>
+          <div>每个账号没有限制打多少次，但是多次打将记录为一次。</div>
+          <div>剩余 BNB 将扣除手续费和 50% 的币加入 LP 池，</div>
+          <div>并且马上将 LP 池打到黑洞地址，这里是马上打到黑洞。</div>
+          <div>假如募资金额过大，例如大于 1000 BNB （此处尚未决定 LP 上限），</div>
+          <div>那么最多将 1000 BNB 放入 LP 池子，剩余的部分同样由社区决定如何使用。</div>
+          <div>对于每个参与打款的账号，将在该币发行的时候，象征性给每个人打 100 个 PDK 。</div>
+          <div>反正募资的那个 0.011 BNB 肯定能买不少的，不要期望募资的币能卖回本。</div>
         </section>
 
         <section>
           <h3>募资失败？</h3>
-          <div>如果最后募集失败，将每人募集的0.01原路打回，0.001作为手续费。</div>
-          <div>加入没任何人参与这个募资，那这个币还是不发行了。</div>
+          <div>如果最后募集失败，将每人募集的 0.01 原路打回， 0.001 作为手续费。</div>
+          <div>假如没任何人参与这个募资，那这个币还是不发行了。</div>
           <div>为啥募资失败就不发行？因为如果没有人知道，那这个发行了也没用。</div>
-          <div>如果你捐赠后又反悔了，请在添加LP之前邮箱联系。<br />开发者将扣除手续费之后原路打回。</div>
+          <div>如果你捐赠后又反悔了，请在添加 LP 之前邮箱联系。<br />开发者将扣除链路手续费之后原路打回。</div>
         </section>
 
         <section>
           <h3>有没有审计？</h3>
           <div>没有。</div>
-          <div>这份代码将直接fork某个通缩币的方式来发行。</div>
-          <div>目前借鉴的火币链的DOG，但是会去掉交易里面加流动池的行为。</div>
-          <div>预期是通缩+持有就分红机制。</div>
+          <div>这份代码将直接 fork 某个主流 ERC20 币的方式来发行。</div>
+          {/* <div>目前借鉴的火币链的 DOG ，但是会去掉交易里面加流动池的行为。</div> */}
+          {/* <div>预期是通缩+持有就分红机制。</div> */}
         </section>
 
         <section>
@@ -281,9 +301,9 @@ function App() {
           web3State.network !== null &&
           web3State.account !== ethers.constants.AddressZero && (
             <div>
-              <div>你的余额: {web3State.balance}HT</div>
+              <div>你的余额: {web3State.balance} BNB</div>
               <br />
-              <div className={styles.button} onClick={donate}>打款 0.011 HT</div>
+              <div className={styles.button} onClick={donate}>打款 0.011 BNB</div>
             </div>
           )}
 
@@ -294,8 +314,8 @@ function App() {
       </div>
 
       <div className={styles.createAt}>
-        此信息创建于：2021年04月22日。<br />
-        如有疑问，咨询： tokenpdk@gmial.com
+        此信息创建于： 2024年03月22日。<br />
+        {/* 如有疑问，咨询： tokenpdk@gmail.com */}
       </div>
     </div>
   );

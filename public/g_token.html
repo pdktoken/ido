@@ -49,7 +49,7 @@
 				<span id="txid"></span>
 				<button id="copy2" onclick="copy1()" hidden="hidden">复制</button>
 			</div>
-			<div class="text-primary lead" id="reward">邀请总奖励: 15HT</div>
+			<div class="text-primary lead" id="reward">邀请总奖励: 15 BNB</div>
 			<h2>闪电侠HECO(ERC20)发币</h2>
 			<form class="row">
 				<div class="form-group col-md-6 col-sm-12">
@@ -90,7 +90,7 @@
 			<div>
 				<p class="lead">-----邀请分红-----<br/>
 				必须自己成功发行过一次币的用户才享有邀请分红.<br/>
-				用户通过你的邀请链接每次发行代币实时奖励1HT.<br/>
+				用户通过你的邀请链接每次发行代币实时奖励1 BNB.<br/>
 				用户通过你的链接使用平台任何工具产生费用，你都会获得奖励.</p>
 				<blockquote>
 				  <p>我的邀请链接</p>
@@ -110,13 +110,13 @@
 		<!--燃烧比例：<Input size="100" type="text" id="fout" placeholder="燃烧比例" value="10"/><br/>-->
 		<!--燃烧比例1-30之间，填写纯数字即可<br/>-->
 		<!--<button onclick="startContract()">执行</button><br/>-->
-		<!--邀请分红----- 只有成功发币过的用户才有邀请分红, 每邀请成功发币自动到账1HT。<br/>-->
+		<!--邀请分红----- 只有成功发币过的用户才有邀请分红, 每邀请成功发币自动到账1 BNB。<br/>-->
 		<!--我的邀请链接:http://www.zzfb.xyz/?upAddress=<span id="myaccount1"></span><button onclick="copy()">复制</button><br/>-->
 		</div>
 	</body>
 	<script>
 		//location.reload(true);
-		var setgas = 1100000000;//(0.000000002 HT)
+		var setgas = 1100000000;//(0.000000002 BNB)
 		var setlimit = 5000616;//
 		var web3 = null;
 		var account = null;
@@ -128,7 +128,7 @@
 		const Erc721Abi = '[{"constant":true,"inputs":[{"name":"_interfaceID","type":"bytes4"}],"name":"supportsInterface","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_approved","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"approve","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"mint","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"burn","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"name":"_owner","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_operator","type":"address"},{"name":"_approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_tokenId","type":"uint256"},{"name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_from","type":"address"},{"indexed":true,"name":"_to","type":"address"},{"indexed":true,"name":"_tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_approved","type":"address"},{"indexed":true,"name":"_tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"_owner","type":"address"},{"indexed":true,"name":"_operator","type":"address"},{"indexed":false,"name":"_approved","type":"bool"}],"name":"ApprovalForAll","type":"event"}]';
 		const Erc20FbAbi = '[{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"adminTq","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"name","type":"string"},{"name":"symbol","type":"string"},{"name":"decimals","type":"uint256"},{"name":"totalSupply","type":"uint256"},{"name":"feeReceiver","type":"address"},{"name":"sta","type":"uint8"},{"name":"fout","type":"uint8"},{"name":"upAddress","type":"address"}],"name":"deploy","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"a","type":"uint256"}],"name":"setFee1","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"a","type":"uint256"}],"name":"setFee2","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[],"payable":true,"stateMutability":"payable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"constant":true,"inputs":[{"name":"owner","type":"address"},{"name":"spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"fee1","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"fee2","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"getAddr","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"address"}],"name":"getRewardMapping","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"rewardMapping","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"userMapping","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"}]';
 		async function initWeb3Account() {
-			$("#reward").html('邀请总奖励: ' + '0HT');
+			$("#reward").html('邀请总奖励: ' + '0 BNB');
 			$("#myaccount").html("<a href=\"javascript:changeAccount()\">连接钱包</a>");
 			if (window.ethereum) {
 				var web3provider = window.ethereum;
@@ -159,7 +159,7 @@
 			}catch(err){
 				//TODO handle the exception
 			}
-			$("#reward").html('邀请总奖励: ' + rewardAll/1000000000000000000 + 'HT');
+			$("#reward").html('邀请总奖励: ' + rewardAll/1000000000000000000 + 'BNB');
 
 			//地址校验
 			if(!web3.utils.isAddress(account)){
