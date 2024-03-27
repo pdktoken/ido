@@ -315,7 +315,7 @@ function App() {
 
       <div className={styles.createAt}>
         此信息创建于： 2024年03月22日。<br />
-        {/* 如有疑问，咨询： tokenpdk@gmail.com */}
+        如有疑问，咨询： pdktoken@gmail.com
       </div>
     </div>
   );
