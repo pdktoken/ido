@@ -1,0 +1,10 @@
+<svg viewBox="0 0 370 405" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(-68.000000, -48.000000)" stroke-width="1" fill="none" fill-rule="evenodd">
+    <path d="M87 155.774l0 188.452l163.205 94.227l163.205 -94.227l0 -188.452l-163.205 -94.227l-163.205 94.227zm163.205 -105.774l173.205 100l0 200l-173.205 100l-173.205 -100l0 -200l173.205 -100z" id="frame.primary" fill-rule="nonzero" fill="#8c54a1"></path>
+  </g>
+  <g id="Group">
+    <text font-size="160" font-style="normal" font-weight="700" line-spacing="90" fill="#8c54a1" data-text-alignment="C">
+      <tspan x="15" y="255">PDK</tspan>
+    </text>
+  </g>
+</svg>

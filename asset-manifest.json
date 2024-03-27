@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/ido/static/css/main.e9227640.chunk.css",
+    "main.js": "/ido/static/js/main.b2f82766.chunk.js",
+    "main.js.map": "/ido/static/js/main.b2f82766.chunk.js.map",
+    "runtime-main.js": "/ido/static/js/runtime-main.dc249e4a.js",
+    "runtime-main.js.map": "/ido/static/js/runtime-main.dc249e4a.js.map",
+    "static/js/2.1ebeecb8.chunk.js": "/ido/static/js/2.1ebeecb8.chunk.js",
+    "static/js/2.1ebeecb8.chunk.js.map": "/ido/static/js/2.1ebeecb8.chunk.js.map",
+    "static/js/3.c2a53b61.chunk.js": "/ido/static/js/3.c2a53b61.chunk.js",
+    "static/js/3.c2a53b61.chunk.js.map": "/ido/static/js/3.c2a53b61.chunk.js.map",
+    "index.html": "/ido/index.html",
+    "static/css/main.e9227640.chunk.css.map": "/ido/static/css/main.e9227640.chunk.css.map",
+    "static/js/2.1ebeecb8.chunk.js.LICENSE.txt": "/ido/static/js/2.1ebeecb8.chunk.js.LICENSE.txt",
+    "static/media/guorenproj.385b0f6e.png": "/ido/static/media/guorenproj.385b0f6e.png",
+    "static/media/king.548c113d.jpg": "/ido/static/media/king.548c113d.jpg",
+    "static/media/pay.8e68b2df.gif": "/ido/static/media/pay.8e68b2df.gif",
+    "static/media/pdk-sougou.b47b2efc.png": "/ido/static/media/pdk-sougou.b47b2efc.png",
+    "static/media/pdk.5dcce691.svg": "/ido/static/media/pdk.5dcce691.svg",
+    "static/media/question.eff49360.jpg": "/ido/static/media/question.eff49360.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dc249e4a.js",
+    "static/js/2.1ebeecb8.chunk.js",
+    "static/css/main.e9227640.chunk.css",
+    "static/js/main.b2f82766.chunk.js"
+  ]
+}
